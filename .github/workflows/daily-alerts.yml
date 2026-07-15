@@ -37,5 +37,14 @@ jobs:
           ${{ secrets.CONFIG_JSON }}
           EOF
 
+      - name: Show config file
+        run: |
+          echo "===== config.json ====="
+          cat config/config.json
+      
+      - name: Validate JSON
+        run: |
+          python -m json.tool config/config.json
+
       - name: Run Daily Alerts
         run: python main.py
