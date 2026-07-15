@@ -1,5 +1,7 @@
 # 📅 Daily Alerts
 
+Current version: v1.1.0
+
 ![Python](https://img.shields.io/badge/python-3.13-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![GitHub Actions](https://img.shields.io/github/actions/workflow/status/TU_USUARIO/daily-alerts/daily-alerts.yml)
