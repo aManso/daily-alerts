@@ -29,6 +29,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Create config.json
+        run: |
+          mkdir -p config
+
+          cat > config/config.json << 'EOF'
+          ${{ secrets.CONFIG_JSON }}
+          EOF
+
       - name: Show config file
         run: |
           echo "===== config.json ====="
@@ -37,14 +45,6 @@ jobs:
       - name: Validate JSON
         run: |
           python -m json.tool config/config.json
-
-      - name: Create config.json
-        run: |
-          mkdir -p config
-
-          cat > config/config.json << 'EOF'
-          ${{ secrets.CONFIG_JSON }}
-          EOF
 
       - name: Run Daily Alerts
         run: python main.py
