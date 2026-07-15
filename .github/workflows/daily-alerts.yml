@@ -1,0 +1,41 @@
+name: Daily Alerts
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # Todos los días a las 08:00 UTC (10:00 en España durante el horario de verano)
+    - cron: '0 8 * * *'
+
+jobs:
+  daily-alerts:
+    runs-on: ubuntu-latest
+
+    env:
+      TELEFONO: ${{ secrets.TELEFONO }}
+      APIKEY: ${{ secrets.APIKEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create config.json
+        run: |
+          mkdir -p config
+
+          cat > config/config.json << 'EOF'
+          ${{ secrets.CONFIG_JSON }}
+          EOF
+
+      - name: Run Daily Alerts
+        run: python main.py

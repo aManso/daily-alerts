@@ -1,0 +1,30 @@
+{
+  "notifications": {
+    "provider": "whatsapp"
+  },
+  "stocks": [
+    {
+      "symbol": "AAPL",
+      "shares": 10,
+      "target": 250,
+      "stop": 180
+    }
+  ],
+  "crypto": [
+    {
+      "symbol": "bitcoin",
+      "amount": 0.1,
+      "target": 120000,
+      "stop": 80000
+    }
+  ],
+  "monitors": {
+    "boe": true,
+    "fuel": {
+        "enabled": true,
+        "reference_station_id": 12345,
+        "radius_km": 5,
+        "fuel_type": "gasoleo_a"
+    }
+  }
+}
