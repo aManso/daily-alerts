@@ -36,29 +36,57 @@ def main():
     monitors = config["monitors"]
 
     if monitors["portfolio"]["enabled"]:
-
-        results.append(
-            check_portfolio(
-                config["portfolio"],
-                config["settings"],
-                state
+        try:
+            results.append(
+                check_portfolio(
+                    config["portfolio"],
+                    config["settings"],
+                    state
+                )
             )
-        )
+        except Exception as e:
+            print(f"Error checking portfolio: {e}")
+            results.append({
+                "title": "Portfolio",
+                "data": [],
+                "alerts": [
+                    "⚠️ Portfolio monitor unavailable today."
+                ]
+            })
 
     if monitors["boe"]["enabled"]:
-
-        results.append(
-            check_boe(state)
-        )
+        try:
+            results.append(
+                check_boe(state)
+            )
+        except Exception as e:
+            print(f"Error checking BOE: {e}")
+            results.append({
+                "title": "BOE",
+                "data": [],
+                "alerts": [
+                    "⚠️ BOE monitor unavailable today."
+                ]
+            })
 
     if monitors["fuel"]["enabled"]:
-        results.append(
-            check_fuel(
-                state,
-                monitors["fuel"],
-                config["settings"]
+        try:
+            results.append(
+                check_fuel(
+                    state,
+                    monitors["fuel"],
+                    config["settings"]
+                )
             )
-        )
+        except Exception as e:
+            print(f"Error checking fuel: {e}")
+            results.append({
+                "title": "Fuel",
+                "data": [],
+                "alerts": [
+                    "⚠️ Fuel monitor unavailable today."
+                ]
+            })
 
     print(f"Results: {results}")
 
