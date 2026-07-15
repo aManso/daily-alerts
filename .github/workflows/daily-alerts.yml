@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TELEFONO: ${{ secrets.TELEFONO }}
+      PHONE: ${{ secrets.PHONE }}
       APIKEY: ${{ secrets.APIKEY }}
 
     steps:

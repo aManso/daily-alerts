@@ -248,7 +248,7 @@ Edit both files with your own settings.
 ## `.env`
 
 ```text
-TELEFONO=346XXXXXXXX
+PHONE=346XXXXXXXX
 APIKEY=YOUR_CALLMEBOT_API_KEY
 ```
 
@@ -409,7 +409,7 @@ Required repository secrets:
 
 | Secret | Description |
 |---------|-------------|
-| TELEFONO | Destination phone number |
+| PHONE | Destination phone number |
 | APIKEY | CallMeBot API key |
 | CONFIG_JSON | Full contents of `config.json` |
 

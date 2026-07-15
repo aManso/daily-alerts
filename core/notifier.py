@@ -4,13 +4,13 @@ import requests
 
 import os
 
-PHONE = os.getenv("TELEFONO")
+PHONE = os.getenv("PHONE")
 APIKEY = os.getenv("APIKEY")
 
 def send_whatsapp(message):
 
     if not PHONE:
-        raise RuntimeError("Environment variable TELEFONO is not defined")
+        raise RuntimeError("Environment variable PHONE is not defined")
     
     if not APIKEY:
         raise RuntimeError("Environment variable APIKEY is not defined")
