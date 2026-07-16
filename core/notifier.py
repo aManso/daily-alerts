@@ -28,3 +28,5 @@ def send_whatsapp(message):
     print("Response:", response.text)
     
     response.raise_for_status()
+
+    print(">>> LEAVING send_whatsapp()")
