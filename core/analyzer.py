@@ -76,27 +76,9 @@ def analyze(results):
                 analysis["alerts"].append(
                     f"🚆 Nueva convocatoria de ADIF\n{call['id']}\n{call['url']}"
                 )
-
-        elif result["title"] == "Fuel":
-            analysis["alerts"].append(analyze_fuel(result["data"]))
         
         analysis["alerts"].extend(
             result["alerts"]
         )
 
     return analysis
-
-def analyze_fuel(data):
-
-    reference = data["reference_station"]
-    cheapest = data["cheapest_station"]
-    radius = data["radius_km"]
-
-    return (
-        "⛽ Combustible\n\n"
-        f"📍 Tu gasolinera\n"
-        f"{reference.name} → {reference.price:.3f} €/L\n\n"
-        f"🥇 Más barata ({radius} km)\n"
-        f"{cheapest.name} → {cheapest.price:.3f} €/L\n\n"
-    )
-
