@@ -12,7 +12,17 @@ def search(query):
 
         page = browser.new_page()
 
-        page.goto("https://www.boe.es/buscar/", wait_until="domcontentloaded", timeout=60000)
+        for attempt in range(2):
+            try:
+                page.goto(
+                    "https://www.boe.es/buscar/",
+                    wait_until="domcontentloaded",
+                    timeout=20000
+                )
+                break
+            except Exception:
+                if attempt == 1:
+                    raise
 
         page.select_option("#bd", "boe")
 
